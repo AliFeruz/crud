@@ -12,7 +12,7 @@ h1,h2,h3,h4,h4,p,span {
 }
  
 body {
-  @apply bg-cyan-500 contrast-[96%]
+  @apply bg-cyan-600
 }
 
 @layer utilities {
