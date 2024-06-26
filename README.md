@@ -1,6 +1,3 @@
-body{display:none}
-
-body{display:block}
 
 # About This App
 
@@ -24,18 +21,5 @@ Welcome to our beautifully crafted Notes WebApp, designed to streamline your not
 *   **Mongoose & MongoDB:** For powerful and scalable data management.
 *   **React Context:** For state management, including theme toggling and data fetching.
 
-Feel free to explore the source code and connect with me on GitHub and LinkedIn for more information and future updates.
+Feel free to explore the source code and connect with me via email: aliferuzcode@gmail.com for more information and future updates.
 
-[
-
-GitHub
-
-](https://github.com/your-github-profile)[
-
-LinkedIn
-
-](https://linkedin.com/in/your-linkedin-profile)
-
-;
-
-{"props":{"pageProps":{}},"page":"/about","query":{},"buildId":"development","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":\[\]}
