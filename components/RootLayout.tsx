@@ -3,14 +3,24 @@ import { useSession } from 'next-auth/react';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import Loader from './Loader';
 import LoginForm from './forms/LoginForm';
-import Logo from './Logo';
 import NavBar from './Navbar';
 import BottomBar from './BottomBar';
+import Topbar from './Topbar';
+import axios from 'axios';
 
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   const {data:session, status} = useSession();
-  const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
+
+  const fetchNotes = async () => {
+    try {
+      const response = await axios.get('/api/notes');
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+      return [];
+    }
+  };
 
   if (status === "loading") {
     return <div className="flex h-screen items-center justify-center">
@@ -29,11 +39,11 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <main className='min-h-screen w-full flex relative'>
-      <Logo/>
+      {/* <Logo/> */}
+      <Topbar fetchNotes={fetchNotes} />
       <NavBar/>
       <BottomBar/>
       {children}
-     
     </main>
   )
 }

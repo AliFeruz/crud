@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from 'bcrypt';
 import { mongooseConnect } from "@/lib/mongoose";
 import { User } from "@/models/user";
+import { JWT } from "next-auth/jwt";
 
 
 type Credentials = {
@@ -51,6 +52,15 @@ export const authOptions = {
   pages: {
     signIn: "/",
   },
+  // callbacks: {
+  //    async jwt({ token, user, account, profile, isNewUser }) {
+  //   if (user) {
+  //   token.id = user.id
+  //  }
+  //  return token
+  // }
+  // }
+  
 }
 
 export default NextAuth(authOptions);

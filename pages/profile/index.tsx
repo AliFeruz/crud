@@ -8,9 +8,9 @@ const Profile = () => {
   return (
     <RootLayout>
     <div className="flex w-5/6 min-h-screen mt-28 justify-center">
-    <h1 className="text-xl text-fuchsia-300 text-center">
+    <h1 className="text-xl text-center">
     Hello, {" "}
-    <span className="text-white text-2xl uppercase">
+    <span className="text-emerald-700 text-2xl uppercase">
     {session?.user?.name}!</span>
     </h1>
       </div>
