@@ -12,13 +12,18 @@ export default async function handler(
     
 
     if(method === 'GET') {
+        const { id, author } = req.query;
+
         if(req.query?.id){
-            const oneNews = await Note.findById({_id: req.query.id})
-            res.status(200).json(oneNews)
-        } else {
-            const news = await Note.find({});
-            res.status(200).json(news)
+            const note = await Note.findById({_id: id})
+            res.status(200).json(note)
+        } 
+        if (author) {
+            const notes = await Note.find({ author: author as string });
+            return res.status(200).json(notes);
         }
+
+        return res.status(400).json({ error: "Author not provided" });
     }
 
     if (method === 'DELETE') {
@@ -30,18 +35,18 @@ export default async function handler(
 
     if(method === 'POST') {
         const {title, author, text} = req.body;
-        const catsDoc = await Note.create({
+        const note = await Note.create({
             title,
             author,
             text
         });
-        res.status(200).json(catsDoc);
+        res.status(200).json(note);
     }
 
     if(method === 'PUT') {
         const {title, text, _id} = req.body;
-        const updatedOneNews = await Note.findOneAndUpdate({_id}, {title, text})
-        res.status(200).json(updatedOneNews);
+        const updatedNote = await Note.findOneAndUpdate({_id}, {title, text})
+        res.status(200).json(updatedNote);
     }
   
 }

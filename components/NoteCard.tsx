@@ -1,35 +1,43 @@
 import { multiFormatDateString } from "@/lib/utils";
 import { Note } from "@/types";
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import NoteForm from "./forms/NoteForm";
+import axios from "axios";
+import DropdownMenu from "./DropdownMenu";
+import ShowMore from "./ShowMore";
 
+
+const getRandomColor = () => {
+    const hue = Math.floor(Math.random() * 360);
+    const saturation = Math.floor(Math.random() * 50) + 30; // 50% to 100% saturation
+    const lightness = Math.floor(Math.random() * 30) + 40; // 40% to 70% lightness
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  };
 
 
 type Props = {
   note: Note;
 };
 
-const NoteCard = ({ note}: Props) => {
+const NoteCard = ({ note }: Props) => {
   const { title, text, createdAt, _id } = note;
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isShowMoreOpen, setIsShowMoreOpen] = useState(false);
+  const [bgColor, setBgColor] = useState("");
+
+
+  useEffect(() => {
+    setBgColor(getRandomColor());
+  }, []);
+
 
   const handleDeleteNote = async () => {
     try {
-      const response = await fetch(`https://crud-notes.vercel.app/notes/${_id}/note`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer `,
-        },
-      });
-
-      if (response.ok) {
+      const response = await axios.delete('/api/notes?_id=' + _id)
+      if (response) {
         console.log("Note deleted successfully");
-         
+   
       } else {
         console.error("Failed to delete note");
       }
@@ -38,39 +46,35 @@ const NoteCard = ({ note}: Props) => {
     }
   };
 
-  const toggleText = () => {
-    setIsExpanded(!isExpanded);
-  };
-
 
   return (
-    <div className="bg-cyan-200  bg-opacity-65 dark:bg-gradient-to-t dark:from-[#17065c] dark:to-fuchsia-800 p-6 
-    shadow-text rounded-md shadow-lg shadow-emerald-300 dark:shadow-cyan-950">
+    <div style={{ backgroundColor: bgColor}}className="bg-opacity-65 p-2 relative shadow-text rounded-xl 
+    shadow-lg shadow-slate-400 dark:shadow-cyan-950">
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <NoteForm action="Update" note={note} onSuccess={() => setIsModalOpen(false)} />
-      </Modal>
-        <div className="flex items-center justify-between p-1 mb-2">
-            <button onClick={() => setIsModalOpen(true)}>
-            <PencilIcon className="w-6 h-6 icon"/>
-            </button>
-            <Button variant="ghost" onClick={handleDeleteNote}>
-            <TrashIcon className="w-6 h-6 icon"/>
-            </Button>
+        </Modal>
+        <Modal isOpen={isShowMoreOpen} onClose={() => setIsShowMoreOpen(false)}>
+        <ShowMore note={note} />
+         </Modal>
+        <div className="flex items-center justify-end p-1 mb-1">
+            <DropdownMenu onEdit={() => setIsModalOpen(true)}
+            onDelete={handleDeleteNote}/>
         </div>
-        <div className="p-2 border-t border-emerald-400">
-        <h1 className="text-xl text font-bold mb-2">{title}</h1>
+        <div className="px-2 pb-1">
+        <h1 className="text-sm text font-bold mb-1">{`${title.substring(0,10)} ${'...'}`}</h1>
         </div>
-        <div className="p-2 min-h-[100px] rounded-md">
+        <div className="px-2 py-1 min-h-[150px] md:min-h-[110px] rounded-md">
         <p className="text text-sm">
-        {isExpanded ? text : `${text.substring(0, 100)}...`}
+        {text.substring(0, 80)}
         </p>
-        {text.length > 100 && (
-          <button onClick={toggleText} className="text-blue-500 text-xs lowercase underline mt-2">
-            {isExpanded ? "Show Less" : "Show More"}
+        {text.length > 80 && (
+          <button onClick={() => setIsShowMoreOpen(true)} 
+          className="text-gray-500 text-xs lowercase underline mt-2">
+            Show More
           </button>
         )}
         </div>
-      <div className="text-xs flex items-center mt-2 dark:text-cyan-200 border-t border-emerald-400 pt-2 text-gray-400">
+       <div className="font-extralight text-xs absolute bottom-2 left-2 flex items-center mt-2 dark:text-slate-900 pt-1 text-gray-600">
         <span>Created: {multiFormatDateString(createdAt)}</span>
       </div>
     </div>

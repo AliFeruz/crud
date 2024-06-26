@@ -1,44 +1,42 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
-import { UserIcon } from '@heroicons/react/24/solid';
+import { UserIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import Modal from './Modal';
-import NoteForm from './forms/NoteForm';
+import Modal from "./Modal";
+import NoteForm from "./forms/NoteForm";
+import { useDataContext } from "@/context/dataContext";
 
-type Props = {
-    fetchNotes: () => void;
-  };
-  
 
-const Topbar = ({ fetchNotes } : Props ) => {
+const Topbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { fetchNotes } = useDataContext();
 
   const handleSuccess = async () => {
-    setIsModalOpen(false); 
-    await fetchNotes(); 
+    setIsModalOpen(false);
+    await fetchNotes();
   };
-
 
   return (
     <nav>
-      <div className="flex-between fixed top-0 bg-gradient-to-l from-cyan-100 via-cyan-50 to-cyan-100 
+      <div
+        className="flex items-center justify-center fixed top-0 bg-gradient-to-l from-slate-300 via-gray-100 to-slate-300 
         dark:bg-gradient-to-r dark:from-fuchsia-900 dark:to-[#180c49] 
-        dark:border-b border-b border-emerald-500 z-30 w-full py-3 md:py-6">
-        <div className="flex-between mx-auto w-5/6">
-          <div className="flex items-center justify-around w-full gap-16">
-            <Link href="/">
-              <h1 className="logo">CRUD</h1>
-            </Link>
-            <div className="md:flex hidden items-center justify-around w-2/5">
-              <button onClick={() => setIsModalOpen(true)} className="flex items-center gap-3">
-                <PencilSquareIcon className="h-[30px] w-[30px] icon" />
-                <p className="icon uppercase text-xl">Add Note</p>
-              </button>
-              <Link href='/profile' className="flex items-center gap-3">
-                <p className="icon text-xl uppercase">Profile</p>
-                <UserIcon className="h-[30px] w-[30px] icon" />
-              </Link>
-            </div>
+        dark:border-b border-b border-gray-500 z-30 w-full py-3 md:py-6"
+      >
+        <div className="flex items-center justify-center md:justify-between mx-auto w-5/6">
+          <Link href="/" className="">
+          <h1 className="logo md:pl-20">CRUD</h1>
+          </Link>
+          <div className="md:flex hidden items-center space-x-40">
+          <button
+          onClick={() => setIsModalOpen(true)}
+          className="flex items-center space-x-3" >
+          <PencilSquareIcon className="h-[30px] w-[30px] icon" />
+          <p className="icon text-base uppercase">Add Note</p>
+          </button>
+          <Link href="/profile" className="flex items-center p-3 -mr-2 rounded-full border-2 border-slate-500">
+          <UserIcon className="h-[30px] w-[30px] icon" />
+          </Link>
           </div>
         </div>
       </div>

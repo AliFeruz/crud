@@ -1,6 +1,5 @@
 
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
-import { Button } from "./ui/button";
 import { useTheme } from "@/context/themeContext";
 
 const ThemeBtn = () => {

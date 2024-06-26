@@ -1,5 +1,6 @@
 import NoteCard from "@/components/NoteCard";
 import RootLayout from "@/components/RootLayout";
+import { useDataContext } from "@/context/dataContext";
 import { Note } from "@/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -7,20 +8,17 @@ import { useEffect, useState } from "react";
 
 
 export default function Home() {
-  const [notes, setNotes] = useState<Note[]>([])
+  const { notes, fetchNotes } = useDataContext();
 
-  useEffect(()=> {
-    axios.get('/api/notes').then(res => {
-      setNotes(res.data)
-    })
-  },[])
-  
+  useEffect(() => {
+    fetchNotes();
+  }, [fetchNotes]);
 
   return (
     <RootLayout>
-    <div className="flex flex-1 mt-24">
+    <div className="flex items-center justify-center mt-24">
     <div className="common-container">
-    <div className="grid-container auto-rows-auto">
+    <div className="w-full px-4 lg:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 auto-rows-auto">
     {notes.slice().reverse().map((note) => (
       <NoteCard
         key={note._id}

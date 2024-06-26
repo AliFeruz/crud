@@ -70,7 +70,7 @@ const NoteForm = ({ action, note, onSuccess} : PostFormProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex rounded-lg flex-col gap-9 w-full max-w-5xl">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex rounded-lg flex-col gap-6 w-full max-w-5xl">
         <FormField
           control={form.control}
           name="title"
@@ -91,20 +91,22 @@ const NoteForm = ({ action, note, onSuccess} : PostFormProps) => {
             <FormItem className="flex flex-col gap-1">
               <FormLabel className="shad-form_label">Text</FormLabel>
               <FormControl>
-                <Textarea className="shad-textarea p-2 custom-scrollbar" {...field} />
+                <Textarea className="shad-textarea p-1 custom-scrollbar" {...field} />
               </FormControl>
               <FormMessage className="shad-form_message"/>
             </FormItem>
           )}
         />
+        <div className="flex justify-around">
         <Button type="submit" className="shad-button_primary whitespace-nowrap">
           {action === 'Update' ? 'Update' : 'Save'}
         </Button>
         {action === "Update" && (
-          <Button className="shad-button_primary bg- whitespace-nowrap">
+          <Button className="shad-button_primary whitespace-nowrap">
             Cancel
           </Button>
         )}
+        </div>
       </form>
     </Form>
   );

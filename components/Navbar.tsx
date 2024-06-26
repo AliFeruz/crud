@@ -13,9 +13,9 @@ const NavBar = () => {
       }
 
     return (
-        <div className='fixed right-10 bottom-10 transform hidden md:flex flex-col 
+        <div className='fixed right-4 bottom-7 transform hidden md:flex flex-col 
         items-center justify-around p-0.5 space-y-2 z-[100]'>
-        <div className='p-1 bg-cyan-200 dark:bg-fuchsia-950 bg-opacity-35 rounded-2xl border border-icon'> 
+        <div className='p-1 bg-slate-200 dark:bg-fuchsia-950 bg-opacity-35 rounded-2xl border border-gray-400'> 
         <ThemeBtn/>
         
         {/* <button onClick={logOut}>
@@ -25,7 +25,7 @@ const NavBar = () => {
         </button> */}
         </div>
         <Link href={'/about'}>
-        <div className="p-1 bg-cyan-200 bg-opacity-25 dark:bg-fuchsia-950 rounded-2xl border border-icon">
+        <div className="p-1 bg-slate-200 bg-opacity-25 dark:bg-fuchsia-950 rounded-2xl border border-gray-400">
         <InformationCircleIcon className="w-8 h-8 icon"/>
         </div>
         </Link>

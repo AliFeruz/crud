@@ -42,19 +42,19 @@ const LoginForm = () => {
 
   return (
     <div className='grid place-items-center h-screen'>
-    <div className='p-5 rounded-lg border border-cyan-500 shadow-md shadow-cyan-50'>
+    <div className='p-5 rounded-lg border border-slate-500 shadow-xl shadow-cyan-50'>
     <h1 className='text-2xl text-center font-bold my-4'>Login</h1>
     <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
     <input type="text" placeholder='Email' value={email}
-    className='w-80 bg-cyan-600 h-10 placeholder:uppercase rounded-md 
+    className='w-80 bg-gray-200 h-10 placeholder:uppercase rounded-lg 
     placeholder:text-gray-400 placeholder:px-2 my-1'
     onChange={(e) => setEmail(e.target.value)}/>
     <input type="text" placeholder='Password' value={password}
-    className='w-80 bg-cyan-600 h-10 placeholder:uppercase rounded-md 
+    className='w-80 bg-gray-200 h-10 placeholder:uppercase rounded-lg 
     placeholder:text-gray-400 placeholder:px-2 my-1'
     onChange={(e) => setPassword(e.target.value)}/>
-    <button className='text-cyan-100 p-2 uppercase border border-cyan-400 mt-1 rounded-md 
-    w-full bg-cyan-600' type='submit'>Login</button>
+    <button className='text-gray-900 p-2 uppercase border border-slate-700 mt-1 rounded-xl 
+    w-full bg-slate-300' type='submit'>Login</button>
     {error && (
     <div className='bg-red-500 text-white w-fit text-sm py-1 px-3 
     rounded-lg mt-2'>
@@ -63,6 +63,9 @@ const LoginForm = () => {
     )}
     <Link href={'/register'} className='text-sm mt-3 text-cyan-600 text-right'>
     Don&apos;t have an account <span className='underline ml-2 uppercase text-cyan-400 underline-offset-4'>Register</span>
+    </Link>
+    <Link href={'/about'} className='text-sm mt-3 text-slate-700 text-right'>
+    About this App <span className='underline ml-2 uppercase text-emerald-500 underline-offset-4'>Read more</span>
     </Link>
     </form>
     </div>
