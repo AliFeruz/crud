@@ -9,34 +9,25 @@ async function isEmailAlreadyRegistered(email: string): Promise<boolean> {
     return !!existingUser;
 }
 
+
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
-) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ message: 'Method not allowed' });
-    }
-
-    const { name, email, password } = req.body;
-
-    if (!name || !email || !password) {
-        return res.status(400).json({ message: 'Missing required fields' });
-    }
-
+  ){
     try {
-        await mongooseConnect();
-
+        const {name, email, password} = await req.body;
+        const hashedPassword = await bcrypt.hash(password, 10)
         const emailAlreadyRegistered = await isEmailAlreadyRegistered(email);
         if (emailAlreadyRegistered) {
-            return res.status(400).json({ message: 'Email address already registered' });
+            return res.status(400).json({ 
+            message: 'Email address already registered.' });
         }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-        await User.create({ name, email, password: hashedPassword });
-
-        return res.status(201).json({ message: 'User registered!' });
+        await User.create({name, email, password: hashedPassword})
+       
+        return res.status(200).json({ message: 'User registered!' });
     } catch (error) {
         console.error('Error registering user:', error);
-        return res.status(500).json({ message: 'An error occurred while registering the user' });
+        return res.status(500).json({ 
+        message: 'An error occurred while registering the user.' });
     }
 }
