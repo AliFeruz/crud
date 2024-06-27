@@ -8,8 +8,8 @@ const About = () => {
       <div className="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
         <div>
         <Link href="/" className='flex items-center justify-start space-x-2 py-4'>
-        <ChevronDoubleLeftIcon className='h-8 w-8 text-slate-700'/>
-        <p className="text-slate-950 hover:underline text-xs uppercase">Back</p>
+        <ChevronDoubleLeftIcon className='h-8 w-8 icon'/>
+        <p className="icon hover:underline text-xs uppercase">Back</p>
         </Link>
         </div>
         <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">About This App</h1>
@@ -38,10 +38,10 @@ const About = () => {
           Feel free to explore the source code and connect with me on GitHub and LinkedIn for more information and future updates.
         </p>
         <div className="flex space-x-4">
-          <Link href="https://github.com/your-github-profile">
+          <Link href="https://github.com/AliFeruz">
             <p className="text-blue-500 dark:text-blue-300 hover:underline">GitHub</p>
           </Link>
-          <Link href="https://linkedin.com/in/your-linkedin-profile">
+          <Link href="https://www.linkedin.com/in/aliferuz/">
             <p className="text-blue-500 dark:text-blue-300 hover:underline">LinkedIn</p>
           </Link>
         </div>

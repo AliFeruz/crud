@@ -13,13 +13,15 @@ const ThemeBtn = () => {
   return (
     <div className="flex-between">
         {themeMode === "dark" ? (
-          <button  onClick={onChangeBtn}>
+          <button  onClick={onChangeBtn} className="flex p-1.5 justify-around items-center">
           <MoonIcon className="h-8 w-8 icon"/>
+          <p className="icon ml-5">Dark</p>
            </button>
           
         ) : (
-          <button onClick={onChangeBtn}>
+          <button onClick={onChangeBtn} className="flex p-1.5 justify-around items-center">
           <SunIcon className="h-8 w-8 icon"/>
+          <p className="icon ml-5">Light</p>
            </button>
         )}
        

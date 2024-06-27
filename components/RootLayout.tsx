@@ -27,13 +27,11 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center">
-      {/* <Logo/> */}
-      <div className="relative">
+    <main className="min-h-screen w-full flex items-center justify-center relative">
       <Topbar />
-      <NavBar />
-      <BottomBar />
-      </div>
+      {/* <NavBar />
+      <BottomBar /> */}
+      
       {children}
     </main>
   );
