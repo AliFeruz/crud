@@ -10,7 +10,7 @@ import ShowMore from "./ShowMore";
 
 const getRandomColor = () => {
     const hue = Math.floor(Math.random() * 360);
-    const saturation = Math.floor(Math.random() * 50) + 30; // 50% to 100% saturation
+    const saturation = Math.floor(Math.random() * 50) + 40; // 50% to 100% saturation
     const lightness = Math.floor(Math.random() * 30) + 40; // 40% to 70% lightness
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   };
