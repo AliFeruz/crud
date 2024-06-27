@@ -24,9 +24,9 @@ const Topbar = () => {
         dark:bg-gradient-to-r dark:from-fuchsia-900 dark:to-[#180c49] 
         dark:border-b border-b border-gray-500 z-30 w-full py-3 md:py-6"
       >
-        <div className="flex items-center mx-4 justify-between w-full md:mx-auto md:w-5/6">
+        <div className="flex items-center mx-4 justify-between w-full md:w-5/6">
           <Link href="/" className="">
-          <h1 className="logo md:pl-20">CRUD</h1>
+          <h1 className="logo">CRUD</h1>
           </Link>
           <div className="flex items-center md:space-x-20">
           <button
