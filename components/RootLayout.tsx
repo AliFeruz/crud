@@ -6,6 +6,9 @@ import LoginForm from "./forms/LoginForm";
 import NavBar from "./Navbar";
 import BottomBar from "./BottomBar";
 import Topbar from "./Topbar";
+import background from '@/public/pattern-randomized.svg'
+import { url } from "inspector";
+import Image from "next/image";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   const { data: session, status } = useSession();
@@ -27,7 +30,18 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center relative">
+    <main className="min-h-screen w-full flex items-center justify-center relative"
+    >   <Image
+        src={background}
+        alt="Background"
+        layout="fill"
+        objectFit="cover"
+        quality={100}
+        style={{
+          position: 'absolute',
+          zIndex: -1
+          }}
+          />
       <Topbar />
       {/* <NavBar />
       <BottomBar /> */}
