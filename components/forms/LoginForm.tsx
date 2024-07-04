@@ -41,7 +41,7 @@ const LoginForm = () => {
 
   return (
     <div className='grid place-items-center h-screen'>
-      <div className='p-5 rounded-lg border border-slate-500 shadow-xl shadow-cyan-50'>
+      <div className='p-5 rounded-xl border border-slate-500 shadow-xl shadow-cyan-50'>
         <h1 className='text-2xl text-center font-bold my-4'>Login</h1>
         <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
           <input type="text" placeholder='Email' value={email}

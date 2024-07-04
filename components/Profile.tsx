@@ -39,17 +39,18 @@ const Profile = () => {
     <div className="relative" ref={menuRef}>
       <button onClick={toggleMenu} className="p-2 mx-1 flex items-center">
         <p className='md:block text-base hidden uppercase icon'>Profile</p>
-        <EllipsisVerticalIcon className="w-8 h-8 icon" />
+        {/* <EllipsisVerticalIcon className="w-8 h-8 icon" /> */}
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-1 p-3 w-44 bg-gray-200 dark:bg-slate-700 border rounded-xl shadow-lg">
+        <div className="absolute right-0 mt-1 p-3 h-80 w-60 bg-gray-200 dark:bg-slate-700 border rounded-xl shadow-lg">
         <div className='p-4 mb-2 flex flex-col items-center'>
         <p className="text-sm icon text-center">Hello, </p>
         <span className="text-emerald-600 mb-1 text-xl">
         {session?.user?.name}!</span>
         <p className='text-xs icon font-thin'>{session?.user?.email}</p>
         </div>
-        <ThemeBtn/>
+       <div className='flex flex-col px-10 mt-2'>
+       <ThemeBtn/>
         <Link href={'/about'}>
         <div className="p-1.5 flex items-center">
         <InformationCircleIcon className="w-8 h-8 icon"/>
@@ -62,6 +63,7 @@ const Profile = () => {
         <p className='icon ml-5'>Log Out</p>
         </div>
         </button> 
+       </div>
         </div>
       )}
     </div>

@@ -16,9 +16,10 @@ export default function Home() {
 
   return (
     <RootLayout>
-    <div className="flex items-center justify-center mt-24">
-    <div className="common-container">
-    <div className="w-full px-4 lg:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 auto-rows-auto">
+    <div className="flex w-full min-h-screen items-start justify-center mt-32">
+    <div className="">
+    <div className="w-full px-4 lg:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
+    lg:grid-cols-4 xl:grid-cols-5 gap-4 auto-rows-auto">
     {notes.slice().reverse().map((note) => (
       <NoteCard
         key={note._id}

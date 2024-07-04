@@ -31,7 +31,7 @@ const DropdownMenu = ({ onEdit, onDelete }: Props) => {
 
   return (
     <div className="relative" ref={menuRef}>
-      <button onClick={toggleMenu} className="py-1">
+      <button onClick={toggleMenu} className="">
         <EllipsisVerticalIcon className="w-6 h-5 text-slate-600 dark:text-slate-950" />
       </button>
       {isOpen && (

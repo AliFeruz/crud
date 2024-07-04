@@ -20,7 +20,7 @@
   }
 
   .common-container {
-    @apply flex flex-col justify-center items-center gap-10 overflow-scroll  py-4 md:py-10 px-1  custom-scrollbar;
+    @apply flex flex-col justify-center items-center gap-10  py-4 md:py-10 px-1 w-full;
   }
 
   .icon {

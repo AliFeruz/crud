@@ -31,7 +31,8 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <main className="min-h-screen w-full flex items-center justify-center relative"
-    >   <Image
+    >  
+     {/* <Image
         src={background}
         alt="Background"
         layout="fill"
@@ -41,7 +42,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
           position: 'absolute',
           zIndex: -1
           }}
-          />
+          /> */}
       <Topbar />
       {/* <NavBar />
       <BottomBar /> */}

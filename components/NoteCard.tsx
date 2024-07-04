@@ -11,7 +11,7 @@ import ShowMore from "./ShowMore";
 const getRandomColor = () => {
     const hue = Math.floor(Math.random() * 360);
     const saturation = Math.floor(Math.random() * 50) + 40; // 50% to 100% saturation
-    const lightness = Math.floor(Math.random() * 30) + 40; // 40% to 70% lightness
+    const lightness = Math.floor(Math.random() * 30) + 50; // 40% to 70% lightness
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   };
 
@@ -56,25 +56,26 @@ const NoteCard = ({ note }: Props) => {
         <Modal isOpen={isShowMoreOpen} onClose={() => setIsShowMoreOpen(false)}>
         <ShowMore note={note} />
          </Modal>
-        <div className="flex items-center justify-end p-1 mb-1">
+        <div className="flex items-center justify-end p-1">
             <DropdownMenu onEdit={() => setIsModalOpen(true)}
             onDelete={handleDeleteNote}/>
         </div>
         <div className="px-2 pb-1">
         <h1 className="text-sm text font-bold mb-1">{`${title.substring(0,10)} ${'...'}`}</h1>
         </div>
-        <div className="px-2 py-1 min-h-[150px] md:min-h-[110px] rounded-md">
+        <div className="px-2 py-1 min-h-[150px] md:min-h-[140px] rounded-md">
         <p className="text text-sm">
         {text.substring(0, 80)}
         </p>
         {text.length > 80 && (
           <button onClick={() => setIsShowMoreOpen(true)} 
-          className="text-gray-500 text-xs lowercase underline mt-2">
+          className="text-gray-200 text-xs lowercase underline mt-2">
             Show More
           </button>
         )}
         </div>
-       <div className="font-extralight text-xs absolute bottom-2 left-2 flex items-center mt-2 dark:text-slate-900 pt-1 text-gray-600">
+       <div className="font-extralight tracking-tight text-xs absolute bottom-2 right-3 flex items-center
+       mt-2 dark:text-slate-900 pt-1 text-gray-100">
         <span>Created: {multiFormatDateString(createdAt)}</span>
       </div>
     </div>
